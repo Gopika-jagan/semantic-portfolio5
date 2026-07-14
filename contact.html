@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Contact | Gopika J</title>
+
+    <meta name="description"
+          content="Contact Gopika J through this portfolio website.">
+
+    <meta name="author"
+          content="Gopika J">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Skip Navigation Link -->
+    <a class="skip-link" href="#main-content">
+        Skip to Main Content
+    </a>
+
+    <!-- Header -->
+    <header>
+        <h1>Contact Me</h1>
+        <p>Feel free to get in touch.</p>
+    </header>
+
+    <!-- Navigation -->
+    <nav aria-label="Primary Navigation">
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="projects.html">Projects</a></li>
+            <li><a href="contact.html" aria-current="page">Contact</a></li>
+        </ul>
+<button id="theme-toggle" aria-label="Toggle Theme">
+    🌙
+</button>
+    </nav>
+
+    <!-- Main Content -->
+    <main id="main-content">
+
+        <section aria-labelledby="contact-heading">
+
+            <h2 id="contact-heading">Get In Touch</h2>
+
+            <form action="#" method="post" aria-label="Contact Form">
+
+                <fieldset>
+
+                    <h2>Contact Information</h2>
+
+                    <div class="form-group">
+                        <label for="name">Full Name</label>
+
+                        <input
+                            type="text"
+                            id="name"
+                            name="name"
+                            placeholder="Enter your full name"
+                            required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+
+                        <input
+                            type="email"
+                            id="email"
+                            name="email"
+                            placeholder="Enter your email address"
+                            required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">Message</label>
+
+                        <textarea
+                            id="message"
+                            name="message"
+                            rows="6"
+                            placeholder="Write your message here..."
+                            required></textarea>
+                    </div>
+
+                    <button type="submit">
+                        Send Message
+                    </button>
+
+                </fieldset>
+
+            </form>
+<hr>
+
+<h3>
+Assignment Features Used
+</h3>
+
+<ul>
+
+<li>DOM Manipulation</li>
+
+<li>Event Handling</li>
+
+<li>CRUD Operations</li>
+
+<li>Local Storage</li>
+
+<li>Responsive Design</li>
+
+</ul>
+
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Gopika J. All Rights Reserved.</p>
+    </footer>
+<script>
+
+const toggleBtn = document.getElementById("theme-toggle");
+
+/* Load saved theme */
+
+if(localStorage.getItem("theme") === "dark"){
+    document.body.classList.add("dark-theme");
+    toggleBtn.textContent = "☀️";
+}
+
+/* Theme toggle */
+
+toggleBtn.addEventListener("click", () => {
+
+    document.body.classList.toggle("dark-theme");
+
+    if(document.body.classList.contains("dark-theme")){
+
+        toggleBtn.textContent = "☀️";
+        localStorage.setItem("theme","dark");
+
+    }else{
+
+        toggleBtn.textContent = "🌙";
+        localStorage.setItem("theme","light");
+
+    }
+
+});
+
+</script>
+
+</body>
+
+</html>

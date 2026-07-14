@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Projects | Gopika J</title>
+
+    <meta name="description"
+          content="Projects created by Gopika J">
+
+    <link rel="stylesheet"
+          href="style.css">
+</head>
+
+<body>
+
+<a class="skip-link"
+   href="#main-content">
+   Skip to Main Content
+</a>
+
+<header>
+    <h1>Project</h1>
+</header>
+
+<nav aria-label="Primary Navigation">
+
+<ul class="nav-links">
+<li><a href="index.html">Home</a></li>
+<li><a href="projects.html" class="active">Projects</a></li>
+<li><a href="contact.html">Contact</a></li>
+</ul>
+<button id="theme-toggle" aria-label="Toggle Theme">
+    🌙
+</button>
+</nav>
+
+<main id="main-content">
+
+<section class="projects-section">
+
+    <h2>My Portfolio Project</h2>
+
+    <p class="project-intro">
+        The project demonstrate my understanding of semantic HTML5,
+        accessibility standards, and SEO best practices.
+    </p>
+
+    <div class="project-grid">
+
+        <article class="project-card">
+
+            <h3>Portfolio Website</h3>
+
+            <p>
+                Responsive portfolio built using
+                semantic HTML5 and accessibility principles.
+            </p>
+
+        </article>
+
+        <article class="project-card">
+
+            <h3>Implement ARIA Labels</h3>
+
+            <p>
+                Implementing ARIA labels and roles for screen readers
+                to improve website accessibility.
+            </p>
+
+        </article>
+
+        <article class="project-card">
+
+            <h3>SEO-Friendly Meta Tags</h3>
+
+            <p>
+                Website is optimized using SEO-friendly meta tags
+                to improve search engine visibility.
+            </p>
+
+        </article>
+	
+<article class="project-card">
+
+            <h3>Advanced CSS3 & Responsive Architecture</h3>
+
+            <p>
+                Utilize CSS Grid for complex, two-dimensional page layouts. Create custom CSS variables for a dynamic light/dark mode theme.
+            </p>
+
+        </article>
+
+        <article class="project-card">
+
+<h3>
+JavaScript To-Do List
+</h3>
+
+<p>
+
+Interactive To-Do List built using JavaScript.
+
+Features include:
+
+</p>
+
+<ul>
+
+<li>Create Task</li>
+
+<li>Edit Task</li>
+
+<li>Delete Task</li>
+
+<li>Mark Complete</li>
+
+<li>Filter Tasks</li>
+
+<li>Local Storage</li>
+
+</ul>
+
+</article>
+
+    </div>
+
+</section>
+
+</main>
+
+<footer>
+
+<p>
+&copy; 2026 Gopika J
+</p>
+
+</footer>
+<script>
+
+const toggleBtn = document.getElementById("theme-toggle");
+
+/* Load saved theme */
+
+if(localStorage.getItem("theme") === "dark"){
+    document.body.classList.add("dark-theme");
+    toggleBtn.textContent = "☀️";
+}
+
+/* Theme toggle */
+
+toggleBtn.addEventListener("click", () => {
+
+    document.body.classList.toggle("dark-theme");
+
+    if(document.body.classList.contains("dark-theme")){
+
+        toggleBtn.textContent = "☀️";
+        localStorage.setItem("theme","dark");
+
+    }else{
+
+        toggleBtn.textContent = "🌙";
+        localStorage.setItem("theme","light");
+
+    }
+
+});
+
+</script>
+
+</body>
+</html>
