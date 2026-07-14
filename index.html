@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Gopika J Portfolio</title>
+
+    <meta name="description"
+          content="Portfolio of Gopika J, IT student specializing in Web Development, Software Developement.">
+
+    <meta name="keywords"
+          content="Portfolio, Web Developer, Software Developer">
+
+    <meta name="author"
+          content="Gopika J">
+
+    <link rel="canonical"
+      href="https://gopika-jagan.github.io/semantic-portfolio3/">
+
+    <link rel="stylesheet" href="style.css">
+    <!-- Open Graph -->
+
+    <meta property="og:title"
+          content="Gopika J Portfolio">
+
+    <meta property="og:description"
+          content="Personal portfolio website">
+
+    <meta property="og:type"
+          content="website">
+
+    <meta property="og:url"
+          content="https://yourdomain.com">
+
+    <meta property="og:image"
+          content="images/profile.jpg">
+
+    <link rel="stylesheet"
+          href="css/style.css">
+</head>
+
+<body>
+
+<a class="skip-link"
+   href="#main-content">
+   Skip to Main Content
+</a>
+
+<header role="banner">
+
+    <h1>Gopika J</h1>
+
+    <p>
+        IT Student | Web Developer |
+        Software Developer
+    </p>
+
+</header>
+
+<nav aria-label="Primary Navigation">
+
+    <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <button id="theme-toggle" aria-label="Toggle Theme">
+    🌙
+</button>
+</nav>
+
+<main id="main-content">
+
+<section aria-labelledby="about-heading">
+
+    <h2 id="about-heading">
+        About Me
+    </h2>
+
+    <img src="https://img.magnific.com/premium-vector/silver-membership-icon-default-avatar-profile-icon-membership-icon-social-media-user-image-vector-illustration_561158-4195.jpg?semt=ais_hybrid&w=740&q=80"
+         alt="Portrait of Gopika J"
+         width="250">
+    <p>I am Gopika J</p>
+    <p>
+       I am currently pursuing my Bachelor of Technology in Information Technology
+    </p>
+    <p>
+        I am an IT student passionate about
+        Web Development, Software Development.
+    </p>
+
+</section>
+
+<section aria-labelledby="skills-heading">
+
+<h2 id="skills-heading">
+Skills
+</h2>
+    <p>
+        Motivated Information Technology student seeking
+        opportunities to apply technical knowledge and
+        develop practical skills in web development,
+        software development, and emerging technologies.
+    </p>
+
+</section>
+
+<section aria-labelledby="certification-heading">
+
+    <h2 id="certification-heading">
+        Certifications
+    </h2>
+
+    <ul>
+        <li>HTML5 and CSS3 Fundamentals</li>
+        <li>Java Programming Basics</li>
+        <li>Introduction to Web Development</li>
+        <li>Cloud Computing Fundamentals</li>
+    </ul>
+
+</section>
+
+<section aria-labelledby="strengths-heading">
+
+    <h2 id="strengths-heading">
+        Strengths
+    </h2>
+
+    <ul>
+        <li>Problem Solving</li>
+        <li>Quick Learner</li>
+        <li>Team Collaboration</li>
+        <li>Communication Skills</li>
+        <li>Adaptability</li>
+    </ul>
+
+</section>
+
+<section aria-labelledby="interests-heading">
+
+    <h2 id="skills-heading">
+        Skills
+    </h2>
+
+    <ul>
+        <li>HTML5</li>
+        <li>CSS3</li>
+        <li>JavaScript</li>
+        <li>Java</li>
+        <li>C++</li>
+    </ul>
+
+</section>
+<section id="todo-section">
+
+    <h2>My To-Do List</h2>
+
+    <div class="todo-input">
+
+        <input
+            type="text"
+            id="taskInput"
+            placeholder="Enter a new task">
+
+        <button id="addTask">
+            Add Task
+        </button>
+
+    </div>
+
+    <div class="filters">
+
+        <button class="filter active" data-filter="all">
+            All
+        </button>
+
+        <button class="filter" data-filter="active">
+            Active
+        </button>
+
+        <button class="filter" data-filter="completed">
+            Completed
+        </button>
+
+    </div>
+
+    <ul id="taskList"></ul>
+
+</section>
+</main>
+
+<footer>
+
+    <p>
+        &copy; 2026 Gopika J
+    </p>
+
+</footer>
+<script>
+
+const toggleBtn = document.getElementById("theme-toggle");
+
+/* Load saved theme */
+
+if(localStorage.getItem("theme") === "dark"){
+    document.body.classList.add("dark-theme");
+    toggleBtn.textContent = "☀️";
+}
+
+/* Theme toggle */
+
+toggleBtn.addEventListener("click", () => {
+
+    document.body.classList.toggle("dark-theme");
+
+    if(document.body.classList.contains("dark-theme")){
+
+        toggleBtn.textContent = "☀️";
+        localStorage.setItem("theme","dark");
+
+    }else{
+
+        toggleBtn.textContent = "🌙";
+        localStorage.setItem("theme","light");
+
+    }
+
+});
+
+let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+
+let currentFilter = "all";
+
+const taskInput = document.getElementById("taskInput");
+
+const addTask = document.getElementById("addTask");
+
+const taskList = document.getElementById("taskList");
+
+const filters = document.querySelectorAll(".filter");
+
+function saveTasks(){
+
+    localStorage.setItem(
+
+        "tasks",
+
+        JSON.stringify(tasks)
+
+    );
+
+}
+
+function displayTasks(){
+
+    taskList.innerHTML = "";
+
+    let filtered = tasks.filter(task => {
+
+        if(currentFilter === "active"){
+
+            return !task.completed;
+
+        }
+
+        if(currentFilter === "completed"){
+
+            return task.completed;
+
+        }
+
+        return true;
+
+    });
+
+    filtered.forEach(task => {
+
+        let li = document.createElement("li");
+
+        li.dataset.id = task.id;
+
+        if(task.completed){
+
+            li.classList.add("completed");
+
+        }
+
+         li.innerHTML = `
+
+        <span>${task.text}</span>
+
+        <div class="actions">
+
+        <button class="complete">
+
+        ${task.completed ? "Undo" : "Done"}
+
+        </button>
+
+        <button class="edit">
+
+        Edit
+
+        </button>
+
+        <button class="delete">
+
+        Delete
+
+        </button>
+
+    </div>
+
+        `;
+
+        taskList.appendChild(li);
+
+    });
+
+}
+
+addTask.addEventListener("click",()=>{
+
+    let text = taskInput.value.trim();
+
+    if(text===""){
+
+        return;
+
+    }
+
+    tasks.push({
+
+        id:Date.now(),
+
+        text:text,
+
+        completed:false
+
+    });
+
+    taskInput.value="";
+
+    saveTasks();
+
+    displayTasks();
+
+});
+
+taskList.addEventListener("click",(e)=>{
+
+    let li = e.target.closest("li");
+
+    if(!li){
+
+        return;
+
+    }
+
+    let id = Number(li.dataset.id);
+
+    let task = tasks.find(t => t.id === id);
+
+    if(e.target.classList.contains("complete")){
+
+        task.completed = !task.completed;
+
+    }
+
+    if(e.target.classList.contains("edit")){
+
+    let updated = prompt(
+
+        "Edit Task",
+
+        task.text
+
+    );
+
+    if(updated){
+
+        task.text = updated;
+
+    }
+
+}
+
+    if(e.target.classList.contains("delete")){
+
+    tasks = tasks.filter(
+
+        t => t.id !== id
+
+    );
+
+}
+
+    saveTasks();
+
+    displayTasks();
+
+    filters.forEach(button => {
+
+    button.addEventListener("click", () => {
+
+        document.querySelector(".filter.active").classList.remove("active");
+
+        button.classList.add("active");
+
+        currentFilter = button.dataset.filter;
+
+        displayTasks();
+
+    });
+
+});
+
+displayTasks();
+</script>
+
+</body>
+</html>
